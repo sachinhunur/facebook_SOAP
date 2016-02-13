@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SignupService WSDL service -->
+
+  <service name="Signup" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://signup"/>
+      <parameter name="wsdlServiceElement" value="SignupService"/>
+      <parameter name="schemaQualified" value="http://signup"/>
+      <parameter name="wsdlServicePort" value="Signup"/>
+      <parameter name="className" value="signup.Signup"/>
+      <parameter name="wsdlPortType" value="Signup"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="validate" qname="operNS:validate" returnQName="retNS:validateReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:firstname" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lastname" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:gender" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pwd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getInterest" qname="operNS:getInterest" returnQName="retNS:getInterestReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAbout" qname="operNS:getAbout" returnQName="retNS:getAboutReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addInterest" qname="operNS:addInterest" returnQName="retNS:addInterestReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:interest" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeInterest" qname="operNS:removeInterest" returnQName="retNS:removeInterestReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:interest" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addNews" qname="operNS:addNews" returnQName="retNS:addNewsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:news" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFriend" qname="operNS:getFriend" returnQName="retNS:getFriendReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="respondFriend" qname="operNS:respondFriend" returnQName="retNS:respondFriendReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:femail" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:temail" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:value" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="login" qname="operNS:login" returnQName="retNS:loginReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pwd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getNews" qname="operNS:getNews" returnQName="retNS:getNewsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="editAbout" qname="operNS:editAbout" returnQName="retNS:editAboutReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:firstname" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:city" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:occupation" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dob" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addFriend" qname="operNS:addFriend" returnQName="retNS:addFriendReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:femail" type="tns:string"/>
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:temail" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://signup" xmlns:retNS="http://signup" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFriendrequest" qname="operNS:getFriendrequest" returnQName="retNS:getFriendrequestReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://signup" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="addInterest respondFriend getFriendrequest removeInterest getFriend getNews login editAbout addNews getAbout getInterest addFriend validate"/>
+
+  </service>
+</deployment>
